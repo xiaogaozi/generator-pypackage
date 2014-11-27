@@ -51,11 +51,15 @@ PypackageGenerator.prototype.askForDetail = function askFor() {
       'WTFPL',
       'None'
     ]
+  }, {
+    name: 'keywords',
+    message: 'Input keywords (seperate by space):'
   }];
   this.prompt(prompts, function (props) {
     this.desc = props.desc;
     this.url = props.url;
     this.license = props.license;
+    this.keywords = props.keywords;
     cb();
   }.bind(this));
 };
@@ -793,10 +797,10 @@ PypackageGenerator.prototype.app = function app() {
   this.template('tests/_test_.py', 'tests/test_' + this.pkg + '.py');
 
   this.copy('gitignore', '.gitignore');
-  this.copy('CHANGES', 'CHANGES');
+  this.copy('CHANGES.rst', 'CHANGES.rst');
   this.copy('MANIFEST.in', 'MANIFEST.in');
   this.copy('runtests.sh', 'runtests.sh');
-  this.template('_README.md', 'README.md');
+  this.template('_README.rst', 'README.rst');
   this.template('_setup.py', 'setup.py');
 
   if (this.buildout) {

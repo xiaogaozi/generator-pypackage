@@ -6,15 +6,12 @@ from <%= pkg %> import __version__
 setup(
     name='<%= pkg %>',
     version=__version__,
-    url='<%= url %>',<% if (license != 'None') { %>
-    license='<%= license %>',<% } %>
     description='<%= desc %>',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
+    url='<%= url %>',
     author='<%= user.git.username %>',
-    author_email='<%= user.git.email %>',
-    packages=find_packages(exclude=['tests']),
-    package_data={'<%= pkg %>': ['CHANGES', 'README.md']},
-    zip_safe=False,<% if (setClassifier) { %>
+    author_email='<%= user.git.email %>',<% if (license != 'None') { %>
+    license='<%= license %>',<% } %><% if (setClassifier) { %>
     classifier=[<% _.each(classifierDevelopmentStatus, function(o) { %>
         '<%= o %>',<% }); %><% _.each(classifierEnvironment, function(o) { %>
         '<%= o %>',<% }); %><% _.each(classifierFramework, function(o) { %>
@@ -26,4 +23,7 @@ setup(
         '<%= o %>',<% }); %><% _.each(classifierTopic, function(o) { %>
         '<%= o %>',<% }); %>
     ],<% } %>
+    keywords='<%= keywords %>',
+    packages=find_packages(exclude=['docs', 'tests*']),
+    zip_safe=False,
 )
