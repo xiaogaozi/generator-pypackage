@@ -22,12 +22,24 @@ describe('pypackage generator', function () {
     it('creates expected files', function (done) {
         var expected = [
             // add files you expect to exist here.
-            '.jshintrc',
-            '.editorconfig'
+            '.gitignore',
+            'CHANGES.rst',
+            'MANIFEST.in',
+            'README.rst',
+            'bootstrap.py',
+            'buildout.cfg',
+            'runtests.sh',
+            'setup.py',
+            'somepkg',
+            'somepkg/__init__.py',
+            'tests',
+            'tests/__init__.py',
+            'tests/test_somepkg.py',
         ];
 
         helpers.mockPrompt(this.app, {
-            'someOption': true
+            'pkg': 'somepkg',
+            'buildout': true
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {
