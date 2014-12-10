@@ -1,4 +1,7 @@
-# generator-pypackage [![Build Status](https://secure.travis-ci.org/xiaogaozi/generator-pypackage.png?branch=master)](https://travis-ci.org/xiaogaozi/generator-pypackage)
+# generator-pypackage
+
+[![Build Status](https://img.shields.io/travis/xiaogaozi/generator-pypackage.svg?style=flat)](https://travis-ci.org/xiaogaozi/generator-pypackage)
+[![npm](https://img.shields.io/npm/v/generator-pypackage.svg?style=flat)](https://www.npmjs.com/package/generator-pypackage)
 
 A generator for [Yeoman](http://yeoman.io).
 
