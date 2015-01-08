@@ -35,6 +35,9 @@ PypackageGenerator.prototype.askFor = function askFor() {
 PypackageGenerator.prototype.askForDetail = function askFor() {
   var cb = this.async();
   var prompts = [{
+    name: 'version',
+    message: 'Your package version'
+  }, {
     name: 'desc',
     message: 'Describe your package'
   }, {
@@ -56,6 +59,7 @@ PypackageGenerator.prototype.askForDetail = function askFor() {
     message: 'Input keywords (seperate by space):'
   }];
   this.prompt(prompts, function (props) {
+    this.version = props.version;
     this.desc = props.desc;
     this.url = props.url;
     this.license = props.license;
@@ -790,16 +794,16 @@ PypackageGenerator.prototype.askForBuildout = function askFor() {
 
 PypackageGenerator.prototype.app = function app() {
   this.mkdir(this.pkg);
-  this.copy('_/__init__.py', this.pkg + '/__init__.py');
+  this.template('_/__init__.py', this.pkg + '/__init__.py');
 
   this.mkdir('tests');
   this.copy('tests/__init__.py', 'tests/__init__.py');
   this.template('tests/_test_.py', 'tests/test_' + this.pkg + '.py');
 
   this.copy('gitignore', '.gitignore');
-  this.copy('CHANGES.rst', 'CHANGES.rst');
   this.copy('MANIFEST.in', 'MANIFEST.in');
   this.copy('runtests.sh', 'runtests.sh');
+  this.template('_CHANGES.rst', 'CHANGES.rst');
   this.template('_README.rst', 'README.rst');
   this.template('_setup.py', 'setup.py');
 

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 0.0.1
+Version <%= version %>
 -------------
 
 - first version
